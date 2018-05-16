@@ -87,7 +87,7 @@ class LinkedList(object):
 
 
     def __next__(self):
-        if self.__current_point is self.__tail_node:
+        if self.__current_point.get_next() is self.__tail_node:
             raise StopIteration
         else:
             self.__current_point = self.__current_point.get_next()
