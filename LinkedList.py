@@ -12,7 +12,7 @@ class LinkedList(object):
         self.__size = int(0)
         self.__head_node = Node()
         self.__tail_node = Node()
-        self.__current_point = Node()
+        self.__current_point = self.__head_node
 
 
     def push_front(self, data):
@@ -29,19 +29,6 @@ class LinkedList(object):
             new_node.set_next(self.__head_node.get_next())
             self.__head_node.set_next(new_node)
             self.__increment__()
-
-
-        # if self.__head_node.get_next() is None:
-        #     self.__head_node.set_next(Node(data))
-        #     self.__head_node.get_next().set_next(
-        #         self.__tail_node
-        #     )
-        #     self.__increment__()
-        # else:
-        #     new_node = Node(data)
-        #     new_node.set_next(self.__head_node.get_next())
-        #     self.__head_node.set_next(new_node)
-        #     self.__increment__()
 
 
     def push_back(self, data):
@@ -93,6 +80,18 @@ class LinkedList(object):
 
     def __len__(self):
         return self.__size
+
+
+    def __iter__(self):
+        return self
+
+
+    def __next__(self):
+        if self.__current_point is self.__tail_node:
+            raise StopIteration
+        else:
+            self.__current_point = self.__current_point.get_next()
+            return self.__current_point.get_data()
 
 
     def get_head_node(self):

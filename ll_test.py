@@ -47,9 +47,21 @@ def test_push_back():
     print(linked_list.get_head_node().get_next().get_next().get_next().get_next().get_data())
 
 
-def main():
-    test_push_front()
-    test_push_back()
+def test_iterator():
+    linked_list = LinkedList()
+    linked_list.push_front(20)
+    linked_list.push_back(42)
+    linked_list.push_front(28)
+    linked_list.push_back(89)
+    linked_list.push_front(91)
 
+    for node in linked_list:
+        print(node)
+
+
+def main():
+    # test_push_front()
+    # test_push_back()
+    test_iterator()
 
 main()
