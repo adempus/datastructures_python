@@ -3,8 +3,8 @@ from DataStructure.Node import Node
 
 '''Represents a data structure that stores values in uni or bi-directional succession.'''
 class LinkedList(object):
-    _head_node = Node
-    _tail_node = None
+    _head_node = Node()
+    _tail_node = Node()
 
 
     ''' constructor 
@@ -13,44 +13,37 @@ class LinkedList(object):
                                  otherwise nodes can be bi-directionally traversed (end to start & vice-versa). 
     '''
     def __init__(self, data=0, is_doubly_linked=False):
-        self.size = int(0)
-        self._init_head_node(data, is_doubly_linked)
-
-
-    def _init_head_node(self, data, doubly_linked):
-        ''' initializes the head of this list for starters '''
-        if isinstance(doubly_linked, bool):
-            self.is_doubly_linked = doubly_linked
-
-            if self.is_doubly_linked is True:
-                self._head_node.next_node = self.DoublyLinkedNode(
-                    self._head_node, data, self._tail_node
-                )
-            else:
-                self._head_node.set_next(
-                    Node(data, self._tail_node)
-                )
-            self._increment()
-
-
-    def _increment(self):
-        ''' increases the size of this list when a node is added to it. '''
-        self.size = self.size + 1
-
-
-    def _decrement(self):
-        ''' decreases the size of this list when a node is removed from it. '''
-        self.size = self.size - 1
+        self.__size = int(0)
+        self.__current_point = None
 
 
     def push_front(self, data):
         ''' data :param - a piece of information to add at the front of this list. '''
-        return None
+        if self._head_node.get_next() is None:
+            self._head_node.set_next(Node(data))
+            self._head_node.get_next().set_next(
+                self._tail_node
+            )
+            self._increment()
+        else:
+            new_node = Node(data)
+            new_node.set_next(self._head_node.get_next())
+            self._head_node.set_next(new_node)
+            self._increment()
 
 
     def push_back(self, data):
         ''' data :param - a piece of information to add to the back of this list. '''
-        return None
+        if self._tail_node.get_next() is None:
+            new_node = Node(data)
+            self._tail_node.set_next(new_node)
+            if self._head_node is None and self.__size < 1:
+                self._head_node.set_next(new_node)
+            self._increment()
+        else:
+            new_node = Node(data)
+            new_node.set_next(self._tail_node.get_next())
+            self._tail_node.set_next(new_node)
 
 
     def insert(self, data, item):
@@ -70,8 +63,19 @@ class LinkedList(object):
             item :param - a piece of information in this list to replace with some data. '''
 
 
+    def _increment(self):
+        ''' increases the size of this list when a node is added to it. '''
+        self.__size = self.__size + 1
+
+
+    def _decrement(self):
+        ''' decreases the size of this list when a node is removed from it. '''
+        self.__size = self.__size - 1
+
+
+
     def __len__(self):
-        return self.size
+        return self.__size
 
 
     class DoublyLinkedNode(Node):
@@ -85,6 +89,4 @@ class LinkedList(object):
 
         def set_prev_node(self, prev_node=None):
             self.prev_node = prev_node
-
-
 
