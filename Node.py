@@ -1,31 +1,35 @@
 class Node(object):
-    # was briefly dismayed at the absence of constructor chaining in python
-    # weird how difficult it can be to move from a relatively complex, to simple language.
     def __init__(self, data=None):
         self.__data = data
-        self.__next_node = None
-        self.__prev_node = None
+        self.__nextNode = None
+        self.__prevNode = None
 
-
-    def get_data(self):
+    def getData(self):
+        ''' :returns the information contained in this node. '''
         return self.__data
 
 
-    def get_next(self):
-        return self.__next_node
+    def getPrev(self):
+        ''' :returns the node directly linked to the left of this one'''
+        return self.__prevNode
 
 
-    def set_data(self, data):
+    def getNext(self):
+        ''' :returns the node directly linked to the right of this one. '''
+        return self.__nextNode
+
+
+    def setData(self, data):
+        ''' data  :param - a piece of information to assign in this node. '''
         self.__data = data
 
 
-    def set_next(self, next_node):
-        self.__next_node = next_node
+    def setPrev(self, prevNode):
+        '''nextNode  :param - a node to directly link to the left of this node. '''
+        self.__prevNode = prevNode
 
 
-    def get_prev(self):
-        return self.__prev_node
+    def setNext(self, nextNode):
+        '''nextNode  :param - a node to directly link to the right of this node. '''
+        self.__nextNode = nextNode
 
-
-    def set_prev(self, prev_node):
-        self.__prev_node = prev_node

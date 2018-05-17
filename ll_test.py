@@ -1,67 +1,68 @@
 from DataStructure.LinkedList import LinkedList
+import logging
 
 
-def create_singly_linked_list(data):
+logging.basicConfig(filename="/home/adempus/PycharmProjects/ByteExcersizes/DataStructure/debugLog.log",
+                    level=logging.DEBUG)
+debugLogger = logging.getLogger()
+
+
+def createLinkedList(data):
     singly_linked = LinkedList(data)
     return singly_linked
 
 
-def test_push_front():
-    print("Testing push front")
+def testPushFront(linked_list):
+    debugLogger.info(" \n----\nTesting LinkedList pushFront()\n"
+                      "Pushing front values: 20, 18, 19, 16, 93, 40\n")
+    testSize(linked_list)
+    testVals = [20, 18, 19, 16, 93, 40]
+    for v in testVals:
+        linked_list.pushFront(v)
+
+    debugLogger.info("Printing pushFront values from the list: \n")
+    for node in linked_list:
+        debugLogger.info(" "+str(node))
+    testSize(linked_list)
+
+
+
+def testPushBack(linked_list):
+    debugLogger.info(" \n----\nTesting LinkedList pushBack()\n"
+                     "Pushing back values: 563, 112, 4, 10, 75, 420\n")
+    testSize(linked_list)
+    testVals = [563, 112, 4, 10, 75, 420]
+    for v in testVals:
+        linked_list.pushBack(v)
+
+    debugLogger.info("Printing pushBack values from the list: \n")
+    for node in linked_list:
+        debugLogger.info(" " + str(node))
+    testSize(linked_list)
+
+
+def testIterator():
     linked_list = LinkedList()
-    print("Size: ", len(linked_list))
-
-    linked_list.push_front(13)
-    print("Pushed value: 13\n Size: ", len(linked_list))
-    print(linked_list.get_head_node().get_next().get_data())
-
-    linked_list.push_front(42)
-    print("Pushed value: 42\n Size: ", len(linked_list))
-    print(linked_list.get_head_node().get_next().get_data())
-    print(linked_list.get_head_node().get_next().get_next().get_data())
-
-    linked_list.push_front(69)
-    print("Pushed value: 69\n Size: ", len(linked_list))
-    print(linked_list.get_head_node().get_next().get_data())
-    print(linked_list.get_head_node().get_next().get_next().get_data())
-    print(linked_list.get_head_node().get_next().get_next().get_next().get_data())
-
-
-def test_push_back():
-    print("\nTesting push back")
-    linked_list = LinkedList()
-    linked_list.push_back(27)
-    print("Pushed value: 27\n Size: ",len(linked_list))
-
-    linked_list.push_back(89)
-    print("Pushed value: 89\n Size: ", len(linked_list))
-    print(linked_list.get_head_node().get_next().get_data())
-    print(linked_list.get_head_node().get_next().get_next().get_data())
-
-    linked_list.push_back(93)
-    print("Pushed value: 93\n Size: ", len(linked_list))
-    print(linked_list.get_head_node().get_next().get_next().get_next().get_data())
-
-    linked_list.push_back(900)
-    print("Pushed value: 900\n Size: ", len(linked_list))
-    print(linked_list.get_head_node().get_next().get_next().get_next().get_next().get_data())
-
-
-def test_iterator():
-    linked_list = LinkedList()
-    linked_list.push_front(20)
-    linked_list.push_back(42)
-    linked_list.push_front(28)
-    linked_list.push_back(89)
-    linked_list.push_front(91)
+    linked_list.pushFront(20)
+    linked_list.pushBack(42)
+    linked_list.pushFront(28)
+    linked_list.pushBack(89)
+    linked_list.pushFront(91)
 
     for node in linked_list:
         print(node)
 
 
+def testSize(linked_list):
+    debugLogger.info("\nTesting LinkedList size()")
+    debugLogger.info("current size = "+str(len(linked_list)))
+
+
+
 def main():
-    # test_push_front()
-    # test_push_back()
-    test_iterator()
+    linked_list = LinkedList()
+    testPushFront(linked_list)
+    testPushBack(linked_list)
+    #testIterator()
 
 main()

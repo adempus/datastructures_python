@@ -1,0 +1,44 @@
+INFO:root: 
+----
+Testing LinkedList pushFront()
+Pushing front values: 20, 18, 19, 16, 93, 40
+
+INFO:root:
+Testing LinkedList size()
+INFO:root:current size = 0
+INFO:root:Printing pushFront values from the list: 
+
+INFO:root: 40
+INFO:root: 93
+INFO:root: 16
+INFO:root: 19
+INFO:root: 18
+INFO:root: 20
+INFO:root:
+Testing LinkedList size()
+INFO:root:current size = 6
+INFO:root: 
+----
+Testing LinkedList pushBack()
+Pushing back values: 563, 112, 4, 10, 75, 420
+
+INFO:root:
+Testing LinkedList size()
+INFO:root:current size = 6
+INFO:root:Printing pushBack values from the list: 
+
+INFO:root: 40
+INFO:root: 93
+INFO:root: 16
+INFO:root: 19
+INFO:root: 18
+INFO:root: 20
+INFO:root: 563
+INFO:root: 112
+INFO:root: 4
+INFO:root: 10
+INFO:root: 75
+INFO:root: 420
+INFO:root:
+Testing LinkedList size()
+INFO:root:current size = 12

@@ -9,42 +9,47 @@ class LinkedList(object):
                                  otherwise nodes can be bi-directionally traversed (end to start & vice-versa). 
     '''
     def __init__(self, data=None, is_doubly_linked=False):
-        self.__size = int(0)
-        self.__head_node = Node()
-        self.__tail_node = Node()
-        self.__current_point = self.__head_node
+        self.__size = int(0)                        # number of nodes in the list
+        self.__headNode = Node()                    # the initial link to a sequence of values
+        self.__tailNode = Node()                    # a link pointing to the back of this list
+        self.__currentPos = self.__headNode         # a marker to track precedence when iterating over nodes
 
 
-    def push_front(self, data):
+    def pushFront(self, data):
         ''' data :param - a piece of information to add at the front of this list.
         '''
-        if self.__head_node.get_next() is None:
-            new_node = Node(data)
-            self.__head_node.set_next(new_node)
-            new_node.set_next(self.__tail_node)
-            self.__tail_node.set_prev(new_node)
+        if self.__headNode.getNext() is None:
+            newNode = Node(data)
+            self.__headNode.setNext(newNode)
+            newNode.setNext(self.__tailNode)
+            newNode.setPrev(self.__headNode)
+            self.__tailNode.setPrev(newNode)
             self.__increment__()
         else:
-            new_node = Node(data)
-            new_node.set_next(self.__head_node.get_next())
-            self.__head_node.set_next(new_node)
+            newNode = Node(data)
+            newNode.setNext(self.__headNode.getNext())
+            self.__headNode.setNext(newNode)
+            newNode.setPrev(self.__headNode)
             self.__increment__()
 
 
-    def push_back(self, data):
+    def pushBack(self, data):
         ''' data :param - a piece of information to add to the back of this list.
         '''
-        if self.__head_node.get_next() is None:
-            new_node = Node(data)
-            self.__head_node.set_next(new_node)
-            new_node.set_next(self.__tail_node)
-            self.__tail_node.set_prev(new_node)
+        if self.__headNode.getNext() is None:
+            newNode = Node(data)
+            self.__headNode.setNext(newNode)
+            newNode.setNext(self.__tailNode)
+            newNode.setPrev(self.__headNode)
+            self.__tailNode.setPrev(newNode)
             self.__increment__()
         else:
-            new_node = Node(data)
-            self.__tail_node.get_prev().set_next(new_node)
-            new_node.set_next(self.__tail_node)
-            self.__tail_node.set_prev(new_node)
+            newNode = Node(data)
+            lastNode = self.__tailNode.getPrev()
+            newNode.setPrev(lastNode)
+            lastNode.setNext(newNode)
+            newNode.setNext(self.__tailNode)
+            self.__tailNode.setPrev(newNode)
             self.__increment__()
 
 
@@ -87,14 +92,15 @@ class LinkedList(object):
 
 
     def __next__(self):
-        if self.__current_point.get_next() is self.__tail_node:
+        if self.__currentPos.getNext() is self.__tailNode:
+            self.__currentPos = self.__headNode
             raise StopIteration
         else:
-            self.__current_point = self.__current_point.get_next()
-            return self.__current_point.get_data()
+            self.__currentPos = self.__currentPos.getNext()
+            return self.__currentPos.getData()
 
 
-    def get_head_node(self):
-        return self.__head_node
+    def getHeadNode(self):
+        return self.__headNode
 
 
