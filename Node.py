@@ -14,9 +14,7 @@ class Node(object):
         return self.__prevNode
 
 
-    def getNext(self):
-        ''' :returns the node directly linked to the right of this one. '''
-        return self.__nextNode
+
 
 
     def setData(self, data):
