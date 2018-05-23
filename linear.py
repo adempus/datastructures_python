@@ -35,7 +35,7 @@ class Node(object):
          else:
              return self._data == node
 
-
+''' represents a single element containing data that is bi-directionally linked between two other Nodes '''
 class DoublyLinkedNode(Node):
     def __init__(self, data=None):
         super().__init__(data)
