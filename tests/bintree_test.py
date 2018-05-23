@@ -1,4 +1,4 @@
-from DataStructure.nonlinear import BinaryTree
+from nonlinear import BinaryTree
 
 binTree0 = BinaryTree()
 binTree1 = BinaryTree()

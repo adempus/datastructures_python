@@ -1,0 +1,177 @@
+INFO:root: 
+----
+Testing LinkedList pushFront()
+Pushing front values: 20, 18, 19, 16, 93, 40
+
+INFO:root:
+----
+Testing LinkedList size()
+INFO:root:Current size = 0
+INFO:root:Printing pushFront values from the list: 
+
+INFO:root: 40
+INFO:root: 93
+INFO:root: 16
+INFO:root: 19
+INFO:root: 18
+INFO:root: 20
+INFO:root:
+----
+Testing LinkedList size()
+INFO:root:Current size = 6
+INFO:root: 
+----
+Testing LinkedList pushBack()
+Pushing back values: 563, 112, 4, 10, 75, 420
+
+INFO:root:
+----
+Testing LinkedList size()
+INFO:root:Current size = 6
+INFO:root:Printing pushBack values from the list: 
+
+INFO:root: 40
+INFO:root: 93
+INFO:root: 16
+INFO:root: 19
+INFO:root: 18
+INFO:root: 20
+INFO:root: 563
+INFO:root: 112
+INFO:root: 4
+INFO:root: 10
+INFO:root: 75
+INFO:root: 420
+INFO:root:
+----
+Testing LinkedList size()
+INFO:root:Current size = 12
+INFO:root:
+----
+Testing LinkedList size()
+INFO:root:Current size = 12
+INFO:root:
+----
+Testing LinkedList iterator
+Pushing back values: 30, 45, 83, 77, 41, 19, 8, 11
+
+INFO:root:Printing values in loop from linked_list
+INFO:root: 40
+INFO:root: 93
+INFO:root: 16
+INFO:root: 19
+INFO:root: 18
+INFO:root: 20
+INFO:root: 563
+INFO:root: 112
+INFO:root: 4
+INFO:root: 10
+INFO:root: 75
+INFO:root: 420
+INFO:root: 30
+INFO:root: 45
+INFO:root: 83
+INFO:root: 77
+INFO:root: 41
+INFO:root: 19
+INFO:root: 8
+INFO:root: 11
+INFO:root:
+----
+Testing LinkedList size()
+INFO:root:Current size = 20
+INFO:root:
+----
+Testing LinkedList size()
+INFO:root:Current size = 20
+INFO:root:
+----
+Testing LinkedList remove
+Removing previously added values: 20, 93, 112, 420
+
+INFO:root:Printing list to confirm removal of previously added values.
+
+INFO:root: 40
+INFO:root: 16
+INFO:root: 19
+INFO:root: 18
+INFO:root: 563
+INFO:root: 4
+INFO:root: 10
+INFO:root: 75
+INFO:root: 30
+INFO:root: 45
+INFO:root: 83
+INFO:root: 77
+INFO:root: 41
+INFO:root: 19
+INFO:root: 8
+INFO:root: 11
+INFO:root:
+----
+Testing LinkedList size()
+INFO:root:Current size = 16
+INFO:root:
+----
+Testing LinkedList size()
+INFO:root:Current size = 16
+INFO:root:
+----
+Testing LinkedList insert
+Inserting value 50 after 30, 476 after 19, and 32 after 11
+
+INFO:root:Printing list to confirm insertion of values. 
+INFO:root: 40
+INFO:root: 16
+INFO:root: 19
+INFO:root: 476
+INFO:root: 18
+INFO:root: 563
+INFO:root: 4
+INFO:root: 10
+INFO:root: 75
+INFO:root: 30
+INFO:root: 50
+INFO:root: 45
+INFO:root: 83
+INFO:root: 77
+INFO:root: 41
+INFO:root: 19
+INFO:root: 8
+INFO:root: 11
+INFO:root: 32
+INFO:root:
+----
+Testing LinkedList size()
+INFO:root:Current size = 19
+INFO:root:
+----
+Testing LinkedList replace()
+Replacing values: 50 with "fifty", 476 "four-hundred-seventy-six" and 32 "thirty-two" 
+
+INFO:root:Printing linked list to confirm replacements
+INFO:root: 40
+INFO:root: 16
+INFO:root: 19
+INFO:root: four-hundred-seventy-six
+INFO:root: 18
+INFO:root: 563
+INFO:root: 4
+INFO:root: 10
+INFO:root: 75
+INFO:root: 30
+INFO:root: fifty
+INFO:root: 45
+INFO:root: 83
+INFO:root: 77
+INFO:root: 41
+INFO:root: 19
+INFO:root: 8
+INFO:root: 11
+INFO:root: thirty-two
+INFO:root:
+----
+Testing LinkedList getNode()
+Getting node containing data: four-hundred-seventy-six
+INFO:root:
+Printing data from retrieved node: four-hundred-seventy-six

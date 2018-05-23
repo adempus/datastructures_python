@@ -1,7 +1,7 @@
 import logging
-from DataStructure.linear import Stack
+from linear import Stack
 
-logging.basicConfig(filename="/home/adempus/PycharmProjects/ByteExcersizes/DataStructure/stackDebug.log",
+logging.basicConfig(filename="/home/adempus/PycharmProjects/ByteExcersizes/DataStructure/tests/result_logs/stackDebug.log",
                     level=logging.DEBUG)
 stackDebugLog = logging.getLogger()
 

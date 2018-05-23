@@ -1,8 +1,8 @@
 import logging
 
-from DataStructure.linear import LinkedList
+from linear import LinkedList
 
-logging.basicConfig(filename="/home/adempus/PycharmProjects/ByteExcersizes/DataStructure/linkedListDebug.log",
+logging.basicConfig(filename="/home/adempus/PycharmProjects/ByteExcersizes/DataStructure/tests/result_logs/linkedListDebug.log",
                     level=logging.DEBUG)
 debugLogger = logging.getLogger()
 

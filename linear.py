@@ -23,6 +23,7 @@ class Node(object):
         self._nextNode = nextNode
 
     def __str__(self):
+        ''' :returns a string representation of the data contained in this node. '''
         return str(self._data)
 
     def __eq__(self, node):
@@ -164,6 +165,7 @@ class LinkedList(object):
 
 
     def __len__(self):
+        ''' :returns the number of nodes in this list'''
         return self._size
 
 
@@ -172,6 +174,7 @@ class LinkedList(object):
 
 
     def __next__(self):
+        ''' traverses over the nodes in this list from left to right. '''
         if self._currentPos.getNext() is not self._tailNode:
             self._currentPos = self._currentPos.getNext()
             return self._currentPos
@@ -184,7 +187,7 @@ class LinkedList(object):
 class Stack(object):
     def __init__(self):
         self._backingList = LinkedList()     # this stack is backed by a linked list
-        self._recentPush = None              # a marker for tracking the most recent push; makes for easy popping off the stack.
+        self._recentPush = None              # for tracking the most recent push; makes for easy popping off the stack.
 
     def push(self, data):
         ''' :param data - a piece of information to pe pushed onto the front of this stack. '''
@@ -202,12 +205,10 @@ class Stack(object):
         return self._recentPush
 
     def __str__(self):
-        stackStr = str()
+        stackStr = "["
         for node in self._backingList:
             stackStr += str(node)+", "
-        size = len(stackStr)
-        stackStr = "["+stackStr[0:size-2]+"]"
-        return stackStr
+        return stackStr[0:(len(stackStr)-2)]+"]"
 
     def __len__(self):
         return len(self._backingList)
