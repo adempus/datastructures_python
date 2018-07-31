@@ -1,4 +1,4 @@
-from nonlinear import BinaryTree
+from datastructs.nonlinear import BinaryTree
 
 binTree0 = BinaryTree()
 binTree1 = BinaryTree()
@@ -16,10 +16,12 @@ def testIsEqual():
 
 
 def main():
-    insertVals = [ 60, 156, 98,	42, 91,	109, 44, 165, 161,
-                   55, 40, 99, 199, 104, 61, 85, 22, 39, 85,
-                   78, 75, 120, 182, 82, 175, 66, 71, 169,
-                   127, 115, 144 ]
+    insertVals = [
+        60, 156, 98, 42, 91, 109, 44, 165, 161,
+        55, 40, 99, 199, 104, 61, 85, 22, 39, 85,
+        78, 75, 120, 182, 82, 175, 66, 71, 169,
+        127, 115, 144
+    ]
     testInsertion(insertVals)
     testIsEqual()
 

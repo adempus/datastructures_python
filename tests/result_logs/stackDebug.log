@@ -20,3 +20,25 @@ INFO:root:
 ----
 Testing stack size()
 INFO:root:Current size = 2
+INFO:root:
+----
+Testing stack size()
+INFO:root:Current size = 0
+INFO:root:
+----
+Testing push of values: "twenty-four", 40, 65, "seventy-seven"
+INFO:root:
+----
+Testing stack size()
+INFO:root:Current size = 4
+INFO:root:stack contents:  [seventy-seven, 65, 40, twenty-four]
+INFO:root:
+----
+Testing pop in stack. 
+Popping off two values from the stack: 
+Value 1: seventy-seven, Value 2: 65
+INFO:root:stack contents:  [40, twenty-four]
+INFO:root:
+----
+Testing stack size()
+INFO:root:Current size = 2

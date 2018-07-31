@@ -6,6 +6,14 @@ Pushing front values: 20, 18, 19, 16, 93, 40
 INFO:root:
 ----
 Testing LinkedList size()
+INFO:root: 
+----
+Testing LinkedList pushFront()
+Pushing front values: 20, 18, 19, 16, 93, 40
+
+INFO:root:
+----
+Testing LinkedList size()
 INFO:root:Current size = 0
 INFO:root:Printing pushFront values from the list: 
 

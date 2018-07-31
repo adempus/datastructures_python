@@ -1,4 +1,4 @@
-INFO:root: 
+INFO:root:
 ----
 Testing LinkedList pushFront()
 Pushing front values: 20, 18, 19, 16, 93, 40
@@ -6,7 +6,7 @@ Pushing front values: 20, 18, 19, 16, 93, 40
 INFO:root:
 Testing LinkedList size()
 INFO:root:current size = 0
-INFO:root:Printing pushFront values from the list: 
+INFO:root:Printing pushFront values from the list:
 
 INFO:root: 40
 INFO:root: 93
@@ -17,7 +17,7 @@ INFO:root: 20
 INFO:root:
 Testing LinkedList size()
 INFO:root:current size = 6
-INFO:root: 
+INFO:root:
 ----
 Testing LinkedList pushBack()
 Pushing back values: 563, 112, 4, 10, 75, 420
@@ -25,7 +25,7 @@ Pushing back values: 563, 112, 4, 10, 75, 420
 INFO:root:
 Testing LinkedList size()
 INFO:root:current size = 6
-INFO:root:Printing pushBack values from the list: 
+INFO:root:Printing pushBack values from the list:
 
 INFO:root: 40
 INFO:root: 93

@@ -1,8 +1,8 @@
 import logging
 
-from linear import LinkedList
+from datastructs.linear import LinkedList
 
-logging.basicConfig(filename="/home/adempus/PycharmProjects/ByteExcersizes/DataStructure/tests/result_logs/linkedListDebug.log",
+logging.basicConfig(filename="./result_logs/linkedListDebug.log",
                     level=logging.DEBUG)
 debugLogger = logging.getLogger()
 
@@ -92,6 +92,7 @@ def testReplace(linked_list):
     linked_list.replace(50, "fifty")
     linked_list.replace(476, "four-hundred-seventy-six")
     linked_list.replace(32, "thirty-two")
+
     debugLogger.info("Printing linked list to confirm replacements")
     printList(linked_list)
 
@@ -115,3 +116,4 @@ def main():
 
 
 main()
+

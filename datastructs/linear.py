@@ -20,10 +20,13 @@ class Node(object):
 
     def setNext(self, nextNode):
         ''' :param nextNode - a node to directly link to the right of this node. '''
+        if isinstance(nextNode, DoublyLinkedNode):
+            nextNode.setPrevious(self)
         self._nextNode = nextNode
 
     def __str__(self):
-        ''' :returns a string representation of the data contained in this node. '''
+        ''' :returns a string representation of the data contained in this node.
+        '''
         return str(self._data)
 
     def __eq__(self, node):
@@ -35,6 +38,7 @@ class Node(object):
          else:
              return self._data == node
 
+
 ''' represents a single element containing data that is bi-directionally linked between two other Nodes '''
 class DoublyLinkedNode(Node):
     def __init__(self, data=None):
@@ -42,55 +46,65 @@ class DoublyLinkedNode(Node):
         self._previousNode = None
 
     def getPrevious(self):
-        ''' :returns the node directly linked to the left of this one. '''
+        ''' :returns the node directly linked to the left of this one.
+        '''
         return self._previousNode
 
     def setPrevious(self, prevNode):
-        ''' :param prevNode - a node to directly link to the left of this one. '''
+        ''' :param prevNode - a node to directly link to the left of this one.
+        '''
         self._previousNode = prevNode
 
 
 '''  Represents a data structure that stores values in uni or bi-directional succession.'''
 class LinkedList(object):
-    def __init__(self, isDoublyLinked=False):
-        ''' :param isDoublyLinked - False indicates that nodes in this list are only traversed uni-directionally (start to end);
-                                 otherwise nodes can be bi-directionally traversed (end to start & vice-versa).
+    def __init__(self, doublyLinked=False):
+        ''' :param doublyLinked - False indicates that nodes in this list are only traversed uni-directionally
+            (start to end); otherwise nodes can be bi-directionally traversed (end to start & vice-versa).
         '''
         self._size = int(0)                  # number of nodes in the list
         self._headNode = Node()              # the initial link to a sequence of values
         self._tailNode = DoublyLinkedNode()  # a link pointing to the back of this list
         self._currentPos = self._headNode    # a marker to track precedence when iterating over nodes
+        self._isDoublyLinked = doublyLinked
+
+
+    def __initNode(self, data=None):
+        if self._isDoublyLinked:
+            return DoublyLinkedNode(data)
+        else:
+            return Node(data)
+
 
     def pushFront(self, data):
         ''' :param data - a piece of information to add at the front of this list.
         '''
         if self.isEmpty():
-            newNode = Node(data)
+            newNode = self.__initNode(data)
             self._headNode.setNext(newNode)
             newNode.setNext(self._tailNode)
-            self._tailNode.setPrevious(newNode)
             self._increment()
         else:
-            newNode = Node(data)
+            newNode = self.__initNode(data)
             newNode.setNext(self._headNode.getNext())
             self._headNode.setNext(newNode)
             self._increment()
+
 
     def pushBack(self, data):
         ''' :param data - a piece of information to add to the back of this list.
         '''
         if self.isEmpty():
-            newNode = Node(data)
+            newNode = self.__initNode(data)
             self._headNode.setNext(newNode)
             newNode.setNext(self._tailNode)
             self._tailNode.setPrevious(newNode)
             self._increment()
         else:
-            newNode = Node(data)
+            newNode = self.__initNode(data)
             lastNode = self._tailNode.getPrevious()
             lastNode.setNext(newNode)
             newNode.setNext(self._tailNode)
-            self._tailNode.setPrevious(newNode)
             self._increment()
 
     def insert(self, item, data):
@@ -102,13 +116,14 @@ class LinkedList(object):
             current = self._headNode
             while current is not self._tailNode:
                 if current == item:
-                    newNode = Node(data)
+                    newNode = self.__initNode(data)
                     newNode.setNext(current.getNext())
                     current.setNext(newNode)
                     self._increment()
                     break
                 else:
                     current = current.getNext()
+
 
     def remove(self, data):
         ''' removes the first encounter of data specified, from this list if it exists.
@@ -126,24 +141,23 @@ class LinkedList(object):
                 else:
                     current = current.getNext()
 
-
-    def replace(self, item, data):
+    def replace(self, data, repData):
         ''' replaces item in this list with some specified data, if item exists.
-            :param item - the piece of information existing in this list to be replaced.
-            :param data - the piece of information replacing whatever data is specified.
+            :param data - the piece of information existing in this list to be replaced.
+            :param repData - the piece of information replacing whatever data is specified.
          '''
         if not self.isEmpty():
-            current = self._headNode.getNext()
-            while current is not self._tailNode:
-                if current == item:
-                    current.setData(data)
+            curData = self._headNode.getNext()
+            while curData is not self._tailNode:
+                if curData == data:
+                    curData.setData(repData)
                     break
                 else:
-                    current = current.getNext()
-
+                    curData = curData.getNext()
 
     def getNode(self, data):
-        ''' :returns the node in this list containing the specified data. '''
+        ''' :returns the node in this list containing the specified data.
+        '''
         current = self._headNode.getNext()
         while current is not self._tailNode:
             if current == data:
@@ -151,8 +165,12 @@ class LinkedList(object):
             else:
                 current = current.getNext()
 
+    def getLast(self):
+        return self._tailNode.getPrevious()
+
     def isEmpty(self):
-        ''' :returns true if the head node of this list does not point to at least one other node; false otherwise. '''
+        ''' :returns true if the head node of this list does not point to at least one other node; false otherwise.
+        '''
         return (self._headNode.getNext() is None or self._headNode.getNext() is self._tailNode) and (self._size < 1)
 
     def _increment(self):
@@ -163,15 +181,12 @@ class LinkedList(object):
         ''' decreases the size of this list when a node is removed from it. '''
         self._size -= 1
 
-
     def __len__(self):
         ''' :returns the number of nodes in this list'''
         return self._size
 
-
     def __iter__(self):
         return self
-
 
     def __next__(self):
         ''' traverses over the nodes in this list from left to right. '''
@@ -181,6 +196,14 @@ class LinkedList(object):
         else:
             self._currentPos = self._headNode
             raise StopIteration
+
+    def __str__(self):
+        string = "["
+        for n in self:
+            string+=str(n.getData())+', ' \
+                                     ''
+        string += ']'
+        return string
 
 
 '''Represents a contiguous structure that places elements in last-in first-out (LIFO) order'''
@@ -195,13 +218,15 @@ class Stack(object):
         self._recentPush = data
 
     def pop(self):
-        ''' :returns the top/front most element from this stack'''
+        ''' :returns the top/front most element from this stack
+        '''
         removedNode = self._backingList.remove(self._recentPush)
         self._recentPush = removedNode.getNext()
         return removedNode
 
     def getTop(self):
-        ''':returns the top node of this stack without removing it. '''
+        ''' :returns the top node of this stack without removing it.
+        '''
         return self._recentPush
 
     def __str__(self):
@@ -222,7 +247,7 @@ class Queue(object):
         self._recentPush = None
 
     def enqueue(self, data):
-        if len(self._backingList) < 1:
+        if len(self) < 1:
             self._backingList.pushBack(data)
             self._recentPush = self._backingList.getNode(data)
         else:
@@ -233,7 +258,6 @@ class Queue(object):
             nextTop = self._recentPush.getNext()
             self._backingList.remove(self._recentPush)
             self._recentPush = nextTop
-
 
     def __len__(self):
         return len(self._backingList)
