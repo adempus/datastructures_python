@@ -165,27 +165,3 @@ class BinaryTree(object):
 
     def __len__(self):
         return self.size()
-
-
-def printOrders(binTree):
-    print(binTree.getPreorder())
-    print(binTree.getInorder())
-    print(binTree.getPostorder())
-
-if '__main__'==__name__:
-    binTree= BinaryTree(34)
-    binTree.add(54)
-    binTree.add(16)
-    binTree.add(27)
-    binTree.add(21)
-    binTree.add(56)
-    binTree.add(49)
-    binTree.add(12)
-    printOrders(binTree)
-    binTree.remove(16)
-    binTree.remove(56)
-    printOrders(binTree)
-    binTree.add(93)
-    printOrders(binTree)
-
-
